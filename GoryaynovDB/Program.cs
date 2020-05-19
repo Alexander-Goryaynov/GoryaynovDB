@@ -8,7 +8,8 @@ namespace GoryaynovDB
 {
     class Program
     {
-        static DatabaseContext context = null;
+        public static DatabaseContext context = null;
+        public const int pageSize = 100;
         static void Main(string[] args) 
         { 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);

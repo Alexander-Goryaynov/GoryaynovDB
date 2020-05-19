@@ -7,9 +7,9 @@ using System.Text;
 
 namespace GoryaynovDB
 {
-    public class DatabaseContext : DbContext
+    class DatabaseContext : DbContext
     {
-        private const string CONFIG_FILE_ADDRESS = "config.txt";
+        const string CONFIG_FILE_ADDRESS = "config.txt";
         public DbSet<Department> Departments { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Rate> Rates { get; set; }
@@ -35,7 +35,7 @@ namespace GoryaynovDB
             modelBuilder.Entity<Rate>().Property(it => it.Id).UseHiLo("seq_rate");
             modelBuilder.Entity<Subject>().Property(it => it.Id).UseHiLo("seq_subject");
         }
-        private string GetConnectionString()
+        string GetConnectionString()
         {
             if (!CheckConfigFile(CONFIG_FILE_ADDRESS))
             {
@@ -56,7 +56,7 @@ namespace GoryaynovDB
             Console.WriteLine();
             return $"Host={data[0]};Port={data[1]};Username={data[2]};Database={data[3]};";
         }
-        private bool CheckConfigFile(string fileAddress)
+        bool CheckConfigFile(string fileAddress)
         {
             int count = 0;
             using(StreamReader sr = new StreamReader(fileAddress))
