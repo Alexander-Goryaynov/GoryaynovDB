@@ -34,6 +34,9 @@ namespace GoryaynovDB
             modelBuilder.Entity<Group>().Property(it => it.Id).UseHiLo("seq_groups");
             modelBuilder.Entity<Rate>().Property(it => it.Id).UseHiLo("seq_rate");
             modelBuilder.Entity<Subject>().Property(it => it.Id).UseHiLo("seq_subject");
+            modelBuilder.Entity<Department>().HasIndex(it => it.Name);
+            modelBuilder.Entity<Group>().HasIndex(it => it.Name);
+            modelBuilder.Entity<Subject>().HasIndex(it => it.Name);
         }
         string GetConnectionString()
         {

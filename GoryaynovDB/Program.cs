@@ -31,7 +31,6 @@ namespace GoryaynovDB
                 Console.WriteLine(RunFirstLabScript());
                 Console.WriteLine(RunSecondLabScript());
                 Console.WriteLine(RunThirdLabScript());
-
             }
             catch (Exception ex)
             {
