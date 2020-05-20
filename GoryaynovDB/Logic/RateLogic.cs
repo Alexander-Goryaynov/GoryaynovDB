@@ -28,13 +28,12 @@ namespace GoryaynovDB.Logic
             {
                 throw new Exception("Некорректный номер зачётки студента");
             }
-            if (model.TeacherPassportNumber == 0)
+            if (model.TeacherPassportNumber == null)
             {
                 throw new Exception("Некорректный номер паспорта преподавателя");
             }
             context.Rates.Add(new Rate
             {
-                Id = model.Id,
                 Mark = model.Mark,
                 Date = model.Date,
                 SubjectId = model.SubjectId,

@@ -12,7 +12,7 @@ namespace GoryaynovDB.Models
         [Key]
         [Required]
         [Column("passport_number")]
-        public int PassportNumber { get; set; }
+        public string PassportNumber { get; set; }
         [Required]
         [Column("last_name")]
         public string LastName { get; set; }

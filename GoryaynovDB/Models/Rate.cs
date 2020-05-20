@@ -27,7 +27,7 @@ namespace GoryaynovDB.Models
         public int StudentRecordBookNumber { get; set; }
         [Required]
         [Column("teacher_passport_number")]
-        public int TeacherPassportNumber { get; set; }
+        public string TeacherPassportNumber { get; set; }
         [ForeignKey("SubjectId")]
         public Subject Subject { get; set; }
         [ForeignKey("StudentRecordBookNumber")]

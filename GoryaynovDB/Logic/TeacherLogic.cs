@@ -12,7 +12,7 @@ namespace GoryaynovDB.Logic
         static DatabaseContext context = Program.context;
         public static void Create(Teacher model)
         {
-            if (model.PassportNumber == 0)
+            if (model.PassportNumber == null)
             {
                 throw new Exception("Введён некорректный номер паспорта");
             }
@@ -50,10 +50,10 @@ namespace GoryaynovDB.Logic
         public static List<Teacher> Read(Teacher model, int pageSize = Program.pageSize, int currentPage = 0)
         {
             List<Teacher> result = new List<Teacher>();
-            if (model.PassportNumber != 0)
+            if (model.PassportNumber != null)
             {
                 result = context.Teachers
-                    .Where(rec => rec.PassportNumber == model.PassportNumber)
+                    .Where(rec => rec.PassportNumber.Equals(model.PassportNumber))
                     .Include(teacher => teacher.Department)
                     .Skip(currentPage * pageSize)
                     .Take(pageSize)
@@ -71,7 +71,7 @@ namespace GoryaynovDB.Logic
         }
         public static void Update(Teacher model)
         {
-            Teacher teacher = context.Teachers.FirstOrDefault(rec => rec.PassportNumber == model.PassportNumber);
+            Teacher teacher = context.Teachers.FirstOrDefault(rec => rec.PassportNumber.Equals(model.PassportNumber));
             teacher.LastName = model.LastName;
             teacher.FirstName = model.FirstName;
             teacher.MiddleName = model.MiddleName;
@@ -81,7 +81,7 @@ namespace GoryaynovDB.Logic
         }
         public static void Delete(Teacher model)
         {
-            Teacher teacher = context.Teachers.FirstOrDefault(rec => rec.PassportNumber == model.PassportNumber);
+            Teacher teacher = context.Teachers.FirstOrDefault(rec => rec.PassportNumber.Equals(model.PassportNumber));
             context.Teachers.Remove(teacher);
             context.SaveChanges();
         }
