@@ -39,7 +39,7 @@ namespace GoryaynovDB
                 Environment.Exit(-1);
             }            
         }
-        static long CreateDepartment()
+        static double CreateDepartment()
         {
             var department = new Department
             {
@@ -50,9 +50,9 @@ namespace GoryaynovDB
             DepartmentLogic.Create(department);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт CreateDepartment выполнен");
-            return (int)(finishTime - startTime).Ticks;
+            return (int)(finishTime - startTime).TotalMilliseconds;
         }
-        static long CreateGroup()
+        static double CreateGroup()
         {
             var group = new Group
             {
@@ -64,9 +64,9 @@ namespace GoryaynovDB
             GroupLogic.Create(group);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт CreateGroup выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long CreateRate()
+        static double CreateRate()
         {
             var rate = new Rate
             {
@@ -83,9 +83,9 @@ namespace GoryaynovDB
             RateLogic.Create(rate);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт CreateRate выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long ReadSubjects()
+        static double ReadSubjects()
         {
             var subject = new Subject
             {
@@ -99,9 +99,9 @@ namespace GoryaynovDB
                 Console.WriteLine(s.Name + " " + s.Hours);
             }                
             Console.WriteLine("---Скрипт ReadSubjects выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long ReadStudents()
+        static double ReadStudents()
         {
             var student = new Student { RecordBookNumber = 38567 };
             var startTime = DateTime.Now;
@@ -112,9 +112,9 @@ namespace GoryaynovDB
                 Console.WriteLine(s.LastName + " " + s.FirstName + " " + s.Group.Name);
             }
             Console.WriteLine("---Скрипт ReadStudents выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long ReadTeachers()
+        static double ReadTeachers()
         {
             var teacher = new Teacher
             {
@@ -128,9 +128,9 @@ namespace GoryaynovDB
                 Console.WriteLine($"{t.FirstName}  {t.MiddleName}  {t.LastName}");
             }
             Console.WriteLine("---Скрипт ReadTeachers выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long UpdateGroup()
+        static double UpdateGroup()
         {
             var groupToUpd = GroupLogic
                 .Read(new Group { Name = "РТбд-32" })
@@ -146,9 +146,9 @@ namespace GoryaynovDB
             GroupLogic.Update(newGroup);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт UpdateGroup выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long UpdateSubject()
+        static double UpdateSubject()
         {
             var subjectToUpd = SubjectLogic
                 .Read(new Subject { Name = "Газодинамика" })
@@ -163,9 +163,9 @@ namespace GoryaynovDB
             SubjectLogic.Update(newSubject);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт UpdateSubject выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long UpdateDepartment()
+        static double UpdateDepartment()
         {
             var departmentToUpd = DepartmentLogic
                 .Read(new Department { Name = "Радиотехника" })
@@ -180,36 +180,36 @@ namespace GoryaynovDB
             DepartmentLogic.Update(newDepartment);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт UpdateDepartment выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long DeleteSubject()
+        static double DeleteSubject()
         {
             var subject = new Subject { Name = "Газодинамика" };
             var startTime = DateTime.Now;
             SubjectLogic.Delete(subject);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт DeleteSubject выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long DeleteTeacher()
+        static double DeleteTeacher()
         {
             var teacher = new Teacher { PassportNumber = "7332089703" };
             var startTime = DateTime.Now;
             TeacherLogic.Delete(teacher);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт DeleteTeacher выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long DeleteDepartment()
+        static double DeleteDepartment()
         {
             var department = new Department { Name = "Электропривод"};
             var startTime = DateTime.Now;
             DepartmentLogic.Delete(department);
             var finishTime = DateTime.Now;
             Console.WriteLine("---Скрипт DeleteDepartment выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long RunFirstLabScript()
+        static double RunFirstLabScript()
         {
             // вывести номер зачётки, ФИО студента, группу и курс
             var startTime = DateTime.Now;
@@ -221,9 +221,9 @@ namespace GoryaynovDB
                     $"{s.MiddleName} {s.Group.Name} {s.Group.Year}");
             }
             Console.WriteLine("---Скрипт FirstLabScript выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long RunSecondLabScript()
+        static double RunSecondLabScript()
         {
             // вывести число преподавателей по кафедрам
             var startTime = DateTime.Now;
@@ -245,9 +245,9 @@ namespace GoryaynovDB
                 Console.WriteLine(group.Key + " " + group.Count());
             }
             Console.WriteLine("---Скрипт SecondLabScript выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
-        static long RunThirdLabScript()
+        static double RunThirdLabScript()
         {
             // отобразить оценки, полученные Яровой за последние 100 дней
             var startTime = DateTime.Now;
@@ -260,7 +260,7 @@ namespace GoryaynovDB
                 Console.WriteLine($"{r.Mark} {r.Date.ToShortDateString()} {r.Subject.Name}");
             }
             Console.WriteLine("---Скрипт ThirdLabScript выполнен");
-            return (finishTime - startTime).Ticks;
+            return (finishTime - startTime).TotalMilliseconds;
         }
     }
 }
