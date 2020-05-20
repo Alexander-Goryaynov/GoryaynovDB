@@ -16,7 +16,7 @@ namespace GoryaynovDB
             try
             {
                 context = new DatabaseContext();
-                /*Console.WriteLine(CreateDepartment());
+                Console.WriteLine(CreateDepartment());
                 Console.WriteLine(CreateGroup());
                 Console.WriteLine(CreateRate());
                 Console.WriteLine(ReadStudents());
@@ -27,7 +27,9 @@ namespace GoryaynovDB
                 Console.WriteLine(UpdateSubject());
                 Console.WriteLine(DeleteDepartment());
                 Console.WriteLine(DeleteSubject());
-                Console.WriteLine(DeleteTeacher());*/
+                Console.WriteLine(DeleteTeacher());
+                Console.WriteLine(RunFirstLabScript());
+                Console.WriteLine(RunSecondLabScript());
                 Console.WriteLine(RunThirdLabScript());
 
             }
